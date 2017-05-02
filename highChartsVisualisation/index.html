@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Python UI</title>
+  <script src="lib/lodash.js"></script>
+  <script src="lib/d3.v3.min.js"></script>
+  <script src="lib/sankey.js"></script>
+  <script src="lib/d3.tip.v0.6.3.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script type="text/javascript" src="topicChart.js"></script>
+  <script type="text/javascript" src="topicsData.js"></script>
+  <script type="text/javascript" src="topicsMain.js"></script>
+  <link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+  <div class="container">
+      <div class="header divClass">
+          <p>Topic Maps</p>
+      </div>
+      <div class="navigation">
+        <p>Some text here</p>
+      </div>
+      <div id="chart" class="chartDiv"></div>
+        <!--<h4>Topic Evolution <small>(work in progress)</small></h4>
+        <div id="chart"></div>-->
+
+      <div class="navigation">
+        <form>
+          <input type="checkbox" name="topic" value="Topic 1" checked="checked"> Topic 1<br>
+          <input type="checkbox" name="topic" value="Topic 2"> Topic 2<br>          
+        </form>
+        <input type="button" value="Draw" onclick="submit()">
+      </div>
+      <div id="topicChart" class="topicChartDiv"></div>
+
+  </div>      
+  
+  <!--<script src="topicsData.js"></script>
+  <script src="topicsMain.js"></script>  -->
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+[
+	{
+	  "timeSort": 0,
+	  "topic":10,
+	  "year":1997,
+	  "topicMilestonePaperLink":"https:\/\/en.wikipedia.org\/wiki\/Latent_Dirichlet_allocation",
+	  "influencedBy":[
+
+	  ]
+	},
+  {
+	"timeSort": 1,
+	"topic":1,
+	"year":1997,
+	"topicMilestonePaperLink":"https:\/\/en.wikipedia.org\/wiki\/Latent_Dirichlet_allocation",
+	"influencedBy":[
+	  0
+	]
+  },
+	{
+		"timeSort": 2,
+		"topic": 20,
+		"year": 2005,
+		"topicMilestonePaperLink": "https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation",
+		"influencedBy" : [
+		]
+	},
+	{
+		"timeSort": 3,
+		"topic": 480,
+		"year": 2005,
+		"topicMilestonePaperLink": "https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation",
+		"influencedBy" : [
+			0
+		]
+	},
+	{
+		"timeSort" :4,
+		"topic": 65,
+		"year": 2012,
+		"topicMilestonePaperLink": "https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation",
+		"influencedBy" : [
+			3
+		]
+	}
+]
