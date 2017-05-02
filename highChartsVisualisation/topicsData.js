@@ -2,7 +2,7 @@
 */
 
 window.getData = (cb) => {
-  d3.json('topics.json', (error, json) => {
+  d3.json('dummy.json', (error, json) => {
     //json = JSON.stringify(json, null, 4)
     let nodes = json
     // nodes.length = 20 // Limiting the set for a quick demo

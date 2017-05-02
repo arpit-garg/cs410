@@ -2,16 +2,17 @@ var completeData = {};
 var timeSeries = [];
 var seriesData = [];
 $( document ).ready(function() {
-   	$.getJSON( "topicChart.json", function( data ) {
+   	$.getJSON( "topicTemporalStrength.json", function( data ) {
    		completeData = data;
 	});
 });
 
-function submit(topic=1) {
+function submit(topic=0) {
     $("input[type=checkbox]:checked").each(function(){
         getCompleteTimePeriod(completeData[topic]);
+        seriesData=[]
         // seriesData.push({'name': $(this)[0].value, marker: {symbol: 'square'}, data: completeData[$(this)[0].value].prediction})
-        seriesData.push({'name': topic, marker: {symbol: 'square'}, data: completeData[topic].prediction})
+        seriesData.push({'name': topic, marker: {symbol: 'square'}, data: completeData[topic].temporalStrength})
         // seriesData.push(checkDataIntegrity(topic));
     });
     
