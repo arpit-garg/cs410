@@ -17,7 +17,7 @@ function submit(topic=0) {
     });
     
     //render(completeData[$("input[type=checkbox]:checked")[0].value], seriesData);
-    render(completeData[topic], seriesData);
+    render(completeData[topic].timeline, seriesData);
 };
 
 function getCompleteTimePeriod(timePeriod){
@@ -44,7 +44,7 @@ function render(topicData, seriesData){
 	        text: 'Topic Prediction Over Time'
 	    },
 	    xAxis: {
-	        categories: topicData.time
+	        categories: topicData
 	    },
 	    yAxis: {
 	        title: {
