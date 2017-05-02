@@ -2,14 +2,14 @@
 */
 
 window.getData = (cb) => {
-  d3.json('dummy.json', (error, json) => {
+  d3.json('topics.json', (error, json) => {
     //json = JSON.stringify(json, null, 4)
     let nodes = json
-    nodes.length = 20 // Limiting the set for a quick demo
+    // nodes.length = 20 // Limiting the set for a quick demo
     nodes = nodes.filter(e => e.year > 0)
 
     // Sort the nodes by year
-    nodes.sort((a, b) => (a.timeSort - b.timeSort))//This may not be needed in our case as the data is time sorted
+    nodes.sort((a, b) => (a.year - b.year))//This may not be needed in our case as the data is time sorted
     const links = []
     let allYears = _.uniq(nodes.map(e => Number(e.year)))
     allYears = allYears.filter(e => isFinite(e))
@@ -25,7 +25,7 @@ window.getData = (cb) => {
     const yearNodes = allYears.map((e) => {
       const yearNode = {
         timeSort: `year-${e}`,
-        topic: e.toString(),
+        topic: `year-${e}`,
         name: e.toString(),
         year: e,
         topicMilestonePaperLink: '',
@@ -49,7 +49,10 @@ window.getData = (cb) => {
       node.name = node.topic.toString()
       node.cssClasses = node.cssClasses || [`node-${node.timeSort}`]
       node.influencedBy.forEach((originalNodeId, idx) => {
-        const sourceIdx = nodes.findIndex(e => e.timeSort === originalNodeId)
+        const sourceIdx = nodes.findIndex(e => e.topic === originalNodeId)
+        if(sourceIdx === -1) {
+          console.log("Index not found for topic" + originalNodeId)
+        }
         console.log(nodes)
         const link = {
           source: sourceIdx,
@@ -66,7 +69,12 @@ window.getData = (cb) => {
           link.cssClasses.push('year-link')
         }
 
-        nodes[sourceIdx].cssClasses.push(`node-node-id-${node.timeSort}`)
+        if(nodes[sourceIdx].hasOwnProperty('cssClasses')) {
+          nodes[sourceIdx].cssClasses.push(`node-node-id-${node.timeSort}`)
+        }
+        else {
+         nodes[sourceIdx].cssClasses = [`node-node-id-${node.timeSort}`] 
+        }
         node.cssClasses.push(`node-node-id-${nodes[sourceIdx].timeSort}`)
 
         links.push(link)
