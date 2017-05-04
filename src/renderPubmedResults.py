@@ -47,7 +47,7 @@ def writeTopicDetailsToJson(K, phiMatrix, idToPmid, metaFileDict):
         topicRelevantDocuments = []
         for key in sorted(relevantDocuments.keys()):
             topicRelevantDocuments.append(relevantDocuments[key])
-            if(len(topicRelevantDocuments)  == 10):
+            if (len(topicRelevantDocuments) == 10):
                 break
 
         topicRelevantDocumentsJson.append(topicRelevantDocuments)
@@ -139,9 +139,8 @@ def writeGraphToJson(topicDependencyGraph, idToPmid, metaFileDict):
         topicDependencyDict[i][4] = topicDependencyDict[i][4].strip(')')
         topicDependencyDict[i][5] = topicDependencyDict[i][5].strip('\n')
 
-
     df = pd.DataFrame.from_dict(topicDependencyDict, orient='index')
-    df.columns = ['timeSort', 'topic', 'weight', 'year','topicMilestonePaperLink', 'std', 'topicTitle']
+    df.columns = ['timeSort', 'topic', 'weight', 'year', 'topicMilestonePaperLink', 'std', 'topicTitle']
     # df.columns = ['timeSort', 'topic', 'year', 'topicMilestonePaperLink']
 
     influencedBy = {}
@@ -151,9 +150,13 @@ def writeGraphToJson(topicDependencyGraph, idToPmid, metaFileDict):
             if topicDependencyGraph[i][j] == 1:
                 currentInfluencedByList.append(j)
         influencedBy[i] = currentInfluencedByList
+    df['influencedBy'] = np.array
+    for i in range(500):
+        # df.loc[df.topic == i, 'influencedBy'] = influencedBy[i]
+        df.set_value(df.topic[df.topic == i].index[0], 'influencedBy', influencedBy[i])
 
-    df['influencedBy'] = pd.Series(influencedBy)
-    df = df.drop(['weight', 'std', 'topicTitle'],axis=1)
+    # df['influencedBy'] = pd.Series(influencedBy)
+    df = df.drop(['weight', 'std', 'topicTitle'], axis=1)
     # df.timeSort = df.timeSort.astype(np.int64)
     # df.topic = df.topic.astype(np.int64)
     # df.year = df.year.astype(np.int64)
@@ -172,12 +175,13 @@ if __name__ == '__main__':
     ldaSummaryFilePath = '/Users/arpitgarg/Documents/UIUC/MSIM/spring17/cs410/Project/sifaka.cs.uiuc.edu/~xwang95/citation_lda/pubmed_citation_lda_500_145317_145317_0.001_0.001_timeCtrl_30_45.lda'
     thetaMatrix, phiMatrix = parseLdaFile(D, K, ldaSummaryFilePath)
 
-    #metaDataFilePath = os.path.join(variables.DATA_DIR, 'PubMed/pubmed_metadata.txt');
-    metaFileDict = readMetaFile("/Users/arpitgarg/Documents/UIUC/MSIM/spring17/cs410/Project/timan102.cs.illinois.edu/~xwang95/data/PubMed/pubmed_metadata.txt")
+    # metaDataFilePath = os.path.join(variables.DATA_DIR, 'PubMed/pubmed_metadata.txt');
+    metaFileDict = readMetaFile(
+        "/Users/arpitgarg/Documents/UIUC/MSIM/spring17/cs410/Project/timan102.cs.illinois.edu/~xwang95/data/PubMed/pubmed_metadata.txt")
 
-    #temporalStrength, relevantPapers = computeTopicDetails(8, phiMatrix, idToPmid, metaFileDict)
-    #print(temporalStrength)
+    # temporalStrength, relevantPapers = computeTopicDetails(8, phiMatrix, idToPmid, metaFileDict)
+    # print(temporalStrength)
 
     topicDependencyGraph = populateDependencyGraph(thetaMatrix, phiMatrix)
     writeGraphToJson(topicDependencyGraph, idToPmid, metaFileDict)
-    #writeTopicDetailsToJson(K, phiMatrix, idToPmid, metaFileDict)
+    # writeTopicDetailsToJson(K, phiMatrix, idToPmid, metaFileDict)
