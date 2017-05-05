@@ -95,7 +95,7 @@ def parseLdaFile(D, K, ldaSummaryFilePath):
     return thetaMatrix, phiMatrix
 
 
-def populateDependencyGraph(thetaMatrix, phiMatrix, threshold=0.05):
+def populateDependencyGraph(thetaMatrix, phiMatrix, threshold=0.04):
     weightedTopicDependencyGraph = np.dot(phiMatrix, thetaMatrix)
     topicDependencyGraph = np.empty(shape=(500, 500))
     count = 0
@@ -112,8 +112,8 @@ def populateDependencyGraph(thetaMatrix, phiMatrix, threshold=0.05):
 
 def writeGraphToJson(topicDependencyGraph, idToPmid, metaFileDict):
     topicDependencyDict = dict()
-    with open(
-            '/Users/arpitgarg/Documents/UIUC/MSIM/spring17/cs410/Project/sifaka.cs.uiuc.edu/~xwang95/citation_lda/pubmed_citation_lda_500_145317_145317_0.001_0.001_timeCtrl_30_45.lda_summary_timeSorted_shortSummary') as f:
+    timeSortedSummaryFile = '/Users/Garima/Documents/workspace/citation_lda/pubmed_citation_lda_500_145317_145317_0.001_0.001_timeCtrl_30_45.lda_summary_timeSorted_shortSummary'
+    with open(timeSortedSummaryFile) as f:
         for count, line in enumerate(f):
             topicDependencyDict[count] = line.split("\t")
             topicKeywords = topicDependencyDict[count][3]
@@ -147,7 +147,7 @@ def writeGraphToJson(topicDependencyGraph, idToPmid, metaFileDict):
     for i in range(0, 500):
         currentInfluencedByList = []
         for j in range(0, 500):
-            if topicDependencyGraph[i][j] == 1:
+            if topicDependencyGraph[i][j] == 1 and i != j:
                 currentInfluencedByList.append(j)
         influencedBy[i] = currentInfluencedByList
     df['influencedBy'] = np.array
@@ -172,12 +172,14 @@ if __name__ == '__main__':
     (pmidToId, idToPmid) = getCitMetaGraphPmidIdMapping(pmd);
     D = len(pmidToId)
     K = 500
-    ldaSummaryFilePath = '/Users/arpitgarg/Documents/UIUC/MSIM/spring17/cs410/Project/sifaka.cs.uiuc.edu/~xwang95/citation_lda/pubmed_citation_lda_500_145317_145317_0.001_0.001_timeCtrl_30_45.lda'
+    # ldaSummaryFilePath = '/Users/arpitgarg/Documents/UIUC/MSIM/spring17/cs410/Project/sifaka.cs.uiuc.edu/~xwang95/citation_lda/pubmed_citation_lda_500_145317_145317_0.001_0.001_timeCtrl_30_45.lda'
+    ldaSummaryFilePath = '/Users/Garima/Documents/workspace/citation_lda/pubmed_citation_lda_500_145317_145317_0.001_0.001_timeCtrl_30_45.lda'
     thetaMatrix, phiMatrix = parseLdaFile(D, K, ldaSummaryFilePath)
 
-    # metaDataFilePath = os.path.join(variables.DATA_DIR, 'PubMed/pubmed_metadata.txt');
-    metaFileDict = readMetaFile(
-        "/Users/arpitgarg/Documents/UIUC/MSIM/spring17/cs410/Project/timan102.cs.illinois.edu/~xwang95/data/PubMed/pubmed_metadata.txt")
+    metaDataFilePath = os.path.join(variables.DATA_DIR, 'PubMed/pubmed_metadata.txt');
+    metaFileDict = readMetaFile(metaDataFilePath)
+    # metaFileDict = readMetaFile(
+        # "/Users/arpitgarg/Documents/UIUC/MSIM/spring17/cs410/Project/timan102.cs.illinois.edu/~xwang95/data/PubMed/pubmed_metadata.txt")
 
     # temporalStrength, relevantPapers = computeTopicDetails(8, phiMatrix, idToPmid, metaFileDict)
     # print(temporalStrength)
