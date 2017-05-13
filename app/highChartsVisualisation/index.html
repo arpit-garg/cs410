@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Python UI</title>
+  <script src="lib/lodash.js"></script>
+  <script src="lib/d3.v3.min.js"></script>
+  <script src="lib/sankey.js"></script>
+  <script src="lib/d3.tip.v0.6.3.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="topicChart.js"></script>
+  <script type="text/javascript" src="topicsData.js"></script>
+  <script type="text/javascript" src="topicsMain.js"></script>
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="jquery.dataTables.min.css" />
+</head>
+
+<body>
+  <div class="container">
+      <div class="header divClass">
+          <p>Topic Maps</p>
+      </div>
+      <div id="chart" class="chartDiv"></div>
+        <!--<h4>Topic Evolution <small>(work in progress)</small></h4>
+        <div id="chart"></div>-->
+      <div id="detailsDiv" style="display:none">
+        <div class="topicChartDiv">
+          <h5>Topic Strength Over Time</h5>
+          <div id="topicChart"></div>
+        </div>  
+        <div class="topicRelevantDiv">
+            <h5>Relevant Documents</h5>
+            <div id="topicRelevant"></div>
+        </div>
+      </div>
+      
+
+  </div>      
+  
+  <!--<script src="topicsData.js"></script>
+  <script src="topicsMain.js"></script>  -->
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+[
+  {
+    "timeSort": 0,
+    "topic": 50,
+    "year": 2003,
+    "topicMilestonePaperLink": "cells database interleukin cell gene production factor human analysis 12 stimulatory sequence proteins development expression natural dendritic data killer genome",
+    "influencedBy": [
+    ]
+  },
+  {
+		"timeSort": 8,
+		"topic": 288,
+		"year": 2003,
+		"topicMilestonePaperLink": "database genome gene information protein human annotation data resource mouse update ncbi biology entrez gene-centered resources model web ontology new",
+		"influencedBy" : [
+
+		]
+	},
+  {
+		"timeSort": 4,
+		"topic": 329,
+		"year": 2005,
+		"topicMilestonePaperLink": "protein interaction database localization subcellular analysis cells biogrid networks interactions datasets general repository gene genetic proteins data functional global proteome",
+		"influencedBy" : [
+			364
+		]
+	},
+	{
+		"timeSort": 3,
+		"topic": 369,
+		"year": 2006,
+		"topicMilestonePaperLink": "splicing alternative gene human analysis genes database dna protein expression genome exons regulatory evolution cells 2008 selection sequence exon breaks",
+		"influencedBy" : [
+		  329
+		]
+	},
+	{
+		"timeSort": 3,
+		"topic": 364,
+		"year": 2004,
+		"topicMilestonePaperLink": "quantitative genes expression real-time gene studies internal rt-pcr surgery cardiac patients reference analysis study trial control controlled rat activity development",
+		"influencedBy" : [
+		  288
+		]
+	},
+	{
+		"timeSort": 6,
+		"topic": 394,
+		"year": 2007,
+		"topicMilestonePaperLink": "breast cancer gene expression alternative splicing splice analysis sites profiling prognosis patients cell tandem good receptor human arabidopsis response prognostic",
+		"influencedBy" : [
+			329
+		]
+	},
+  	{
+    "timeSort": 4,
+    "topic": 65,
+    "year": 2007,
+    "topicMilestonePaperLink": "database protein gene genomes sequence functional 2009 ensembl resource genome alignment multiple data analysis eukaryotic annotation families orthologs methods version",
+    "influencedBy": [
+    	50
+    ]
+  }
+
+]
